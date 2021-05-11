@@ -1,52 +1,41 @@
-<!DOCTYPE HTML>
-<!--
-	Aerial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Dhivya's Online Portfolio</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
-		<div id="wrapper">
-			<div id="bg"></div>
-			<div id="overlay"></div>
-			<div id="main">
-
-				<!-- Header -->
-					<header id="header">
-						
-						<img src="images/me4.jpg" alt="Dhivya"  width="300" height="300">
-						<h1>Dhivya Ravindran</h1>
-						<p>&bull; Penultimate Year Computing Student at Imperial College London &nbsp;&bull;</p>
-						
-						
-						<nav>
-							<ul>
-								<li><a href="https://www.linkedin.com/in/dhivya-ravindran" class="icon brands fa-linkedin-in"  target="_blank"><span class="label">LinkedIn</span></a></li>
-								<li><a href="/images/cv.pdf" class="icon fas fa-file"><span class="label"  target="_blank" download>CV</span></a></li>
-								<li><a href="https://www.github.com/dhivya3818" class="icon brands fa-github"  target="_blank"><span class="label">Github</span></a></li>
-								<li><a href="mailto: dr3818@ic.ac.uk" class="icon solid fa-envelope"><span class="label"  target="_blank">Email</span></a></li>
-							</ul>
-						</nav>
-					</header>
-
-				<!-- Footer -->
-					<footer id="footer"> Dhivya Ravindran
-						<span class="copyright">&copy; Design by <a href="http://html5up.net">HTML5 UP</a>.</span>
-					</footer>
-
-			</div>
-		</div>
-		<script>
-			window.onload = function() { document.body.classList.remove('is-preload'); }
-			window.ontouchmove = function() { return false; }
-			window.onorientationchange = function() { document.body.scrollTop = 0; }
-		</script>
-	</body>
+  <head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="connect-streams-min.js"></script>
+  </head>
+  <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
+  <body onload="init()">
+    <div id="container-div" style="width: 400px; height: 800px;"></div>
+    <script type="text/javascript">
+      var containerDiv = document.getElementById("container-div");
+      var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
+      // initialize the streams api
+      function init() {
+        // initialize the ccp
+        connect.core.initCCP(containerDiv, {
+          ccpUrl: instanceURL,            // REQUIRED
+          loginPopup: true,               // optional, defaults to `true`
+          loginPopupAutoClose: true,      // optional, defaults to `false`
+          loginOptions: {                 // optional, if provided opens login in new window
+            autoClose: true,              // optional, defaults to `false`
+            height: 600,                  // optional, defaults to 578
+            width: 400,                   // optional, defaults to 433
+            top: 0,                       // optional, defaults to 0
+            left: 0                       // optional, defaults to 0
+          },
+          region: "eu-west-2",         // REQUIRED for `CHAT`, optional otherwise
+          softphone: {                    // optional, defaults below apply if not provided
+            allowFramedSoftphone: true,   // optional, defaults to false
+            disableRingtone: false,       // optional, defaults to false
+            ringtoneUrl: "./ringtone.mp3" // optional, defaults to CCP’s default ringtone if a falsy value is set
+          },
+          pageOptions: {                  // optional
+            enableAudioDeviceSettings: false, // optional, defaults to 'false'
+            enablePhoneTypeSettings: true // optional, defaults to 'true'
+          }
+        });
+      }
+    </script>
+  </body>
 </html>
