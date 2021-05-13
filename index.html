@@ -37,28 +37,28 @@
           enablePhoneTypeSettings: true // optional, defaults to 'true'
         }
       });
-      // connect.contact(function (contact) {
+      connect.contact(function (contact) {
 
-      //   contact.onIncoming(function (contact) {
-      //   });
+        contact.onIncoming(function (contact) {
+        });
 
-      //   contact.onRefresh(function (contact) {
-      //   });
+        contact.onRefresh(function (contact) {
+        });
 
-      //   contact.onAccepted(function (contact) {
-      //   });
+        contact.onAccepted(function (contact) {
+        });
 
-      //   contact.onEnded(function () {
-      //   });
+        contact.onEnded(function () {
+        });
 
-      //   contact.onConnected(function () {
-      //     console.log(`onConnected(${contact.getContactId()})`);
-      //     var attributeMap = contact.getAttributes();
-      //     var zip = JSON.stringify(attributeMap["zip"]["value"]);
-      //     window.alert("Customer's zipcode: " + zip);
+        contact.onConnected(function () {
+          console.log(`onConnected(${contact.getContactId()})`);
+          var attributeMap = contact.getAttributes();
+          var zip = JSON.stringify(attributeMap["zip"]["value"]);
+          window.alert("Customer's zipcode: " + zip);
 
-      //   });
-      // });
+        });
+      });
     }
   </script>
 </body>
