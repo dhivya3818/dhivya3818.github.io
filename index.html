@@ -54,7 +54,7 @@
         });
 
         contact.onRefresh(function (contact) {
-          window.alert("Refrehed message");
+          window.alert("language is " + JSON.stringify(contact.getAttributes()));
         });
 
         contact.onAccepted(function (contact) {
