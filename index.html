@@ -53,7 +53,7 @@
         contact.onIncoming(function (contact) {
         });
 
-        contact.onRefresh(function (contact) {
+        contact.onRefresh(async function (contact) {
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
           const agentChatSession = await cnn.getMediaController();
 
