@@ -15,8 +15,8 @@
     var containerDiv = document.getElementById("container-div");
     var agentContainerDiv = document.getElementById("agent-container-div");
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
-    
-    
+
+
     // initialize the streams api
     function init() {
       // initialize the ccp
@@ -45,7 +45,7 @@
 
       // configuring ChatSession 
       connect.ChatSession.setGlobalConfig({
-        region: "eu-west-2", 
+        region: "eu-west-2",
       });
 
       connect.contact(function (contact) {
@@ -54,7 +54,17 @@
         });
 
         contact.onRefresh(function (contact) {
-          window.alert("language is " + JSON.stringify(contact.getAttributes()));
+          const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
+          const agentChatSession = await cnn.getMediaController();
+
+          const awsSdkResponse = await chatSession.getTranscript({
+            maxResults: 100,
+            sortOrder: "ASCENDING"
+          });
+
+          const { InitialContactId, NextToken, Transcript } = awsSdkResponse.data;
+          
+          window.alert(JSON.stringify(Transcript));
         });
 
         contact.onAccepted(function (contact) {
@@ -75,7 +85,7 @@
 
         });
       });
-      
+
 
     }
   </script>
