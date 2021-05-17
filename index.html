@@ -4,16 +4,19 @@
 <head>
   <meta charset="UTF-8">
   <script type="text/javascript" src="connect-streams-min.js"></script>
+  <script type="text/javascript" src="amazon-connect-chat.js"></script>
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
 
 <body onload="init()">
   <div id="container-div" style="width: 400px; height: 800px;"></div>
-  <div id="text-container-div" style="width: 800px; height: 200px;"></div>
+  <div id="agent-container-div" style="width: 400px; height: 800px;"></div>
   <script type="text/javascript">
     var containerDiv = document.getElementById("container-div");
-    var textContainerDiv = document.getElementById("text-container-div");
+    var agentContainerDiv = document.getElementById("agent-container-div");
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
+    
+    
     // initialize the streams api
     function init() {
       // initialize the ccp
@@ -39,13 +42,19 @@
           enablePhoneTypeSettings: true // optional, defaults to 'true'
         }
       });
+
+      // configuring ChatSession 
+      connect.ChatSession.setGlobalConfig({
+        region: "eu-west-2", 
+      });
+
       connect.contact(function (contact) {
 
         contact.onIncoming(function (contact) {
         });
 
         contact.onRefresh(function (contact) {
-          textContainerDiv.innerHTML = "Incoming!";
+          window.alert("Refrehed message");
         });
 
         contact.onAccepted(function (contact) {
@@ -54,15 +63,20 @@
         contact.onEnded(function () {
         });
 
-        contact.onConnected(function () {
+        contact.onConnected(async function () {
           console.log(`onConnected(${contact.getContactId()})`);
           var attributeMap = contact.getAttributes();
           var zip = JSON.stringify(attributeMap["zip"]["value"]);
           window.alert("Customer's zipcode: " + zip);
 
-          testContainerDiv.innerHTML = "trying smtg";
+          // creating Agent Chat Session
+          const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
+          const agentChatSession = await cnn.getMediaController();
+
         });
       });
+      
+
     }
   </script>
 </body>
