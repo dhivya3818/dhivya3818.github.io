@@ -42,10 +42,10 @@
       connect.contact(function (contact) {
 
         contact.onIncoming(function (contact) {
-          textContainerDiv.innerHTML = "Incoming!";
         });
 
         contact.onRefresh(function (contact) {
+          textContainerDiv.innerHTML = "Incoming!";
         });
 
         contact.onAccepted(function (contact) {
