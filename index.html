@@ -83,7 +83,9 @@
 
 
               // aws translate code
+
               window.translator = new AWS.Translate({endpoint:ep, region:AWS.config.region});
+              console.log("after translator thingy");
               AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
               var params = {
                 Text: messageData.data.Content,
