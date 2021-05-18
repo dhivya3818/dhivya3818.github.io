@@ -21,7 +21,7 @@
     // configuring AWS Service
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
-    window.translator = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
+    window.translator = new AWS.Translate({endpoint:ep, region:AWS.config.region});
 
 
     // initialize the streams api
@@ -73,8 +73,6 @@
           // testing retrieval of contact attribute
           console.log(`onConnected(${contact.getContactId()})`);
           var attributeMap = contact.getAttributes();
-          var zip = JSON.stringify(attributeMap["zip"]["value"]);
-          window.alert("Customer's zipcode: " + zip);
 
           // creating Agent Chat Session
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
@@ -93,7 +91,7 @@
                 TargetLanguageCode: 'en'
               };
 
-              window.translator.translateText(params, function onSendMessageTranslate(err,
+              await window.translator.translateText(params, function onSendMessageTranslate(err,
                 data) {
                 if (err) {
                   console.log("translaatee eerooooooooooooorrrrrrr");
