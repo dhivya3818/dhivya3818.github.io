@@ -22,7 +22,7 @@
     // configuring AWS Service
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
-    
+
     window.translator = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
 
 
@@ -119,15 +119,16 @@
       });
 
       function getEvents(contact, agentChatSession) {
-            contact.getAgentConnection().getMediaController().then(controller => {
-              controller.onMessage(messageData => {
-                console.log("calling getEvents");
-                console.log(messageData.data.Content);
-                window.alert(messageData.data.Content);
-                
-              })
-            })
-          }
+        console.log("start of get Evenets");
+        agentChatSession.then(controller => {
+          controller.onMessage(messageData => {
+            console.log("calling getEvents");
+            console.log(messageData.data.Content);
+            window.alert(messageData.data.Content);
+
+          })
+        })
+      }
 
 
     }
