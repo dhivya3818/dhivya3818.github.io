@@ -21,7 +21,6 @@
     // configuring AWS Service
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
-    window.translator = new AWS.Translate({endpoint:ep, region:AWS.config.region});
 
 
     // initialize the streams api
@@ -84,6 +83,7 @@
 
 
               // aws translate code
+              window.translator = new AWS.Translate({endpoint:ep, region:AWS.config.region});
               AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
               var params = {
                 Text: messageData.data.Content,
