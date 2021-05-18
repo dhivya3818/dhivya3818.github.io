@@ -94,7 +94,7 @@
 
           const { InitialContactId, NextToken, Transcript } = awsSdkResponse.data;
 
-          window.alert(JSON.stringify(Transcript[Transcript.length - 1]["Content"]));
+          // window.alert(JSON.stringify(Transcript[Transcript.length - 1]["Content"]));
         });
 
         contact.onAccepted(function (contact) {
