@@ -3,8 +3,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.908.0.min.js"></script>
   <script type="text/javascript" src="connect-streams-min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.908.0.min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
@@ -90,7 +90,8 @@
                 SourceLanguageCode: 'auto',
                 TargetLanguageCode: 'en'
               };
-
+              
+              console.log("before translate Text");
               window.translator.translateText(params, function onSendMessageTranslate(err,
                 data) {
                 if (err) {
