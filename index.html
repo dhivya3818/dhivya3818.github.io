@@ -114,7 +114,7 @@
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
           const agentChatSession = await cnn.getMediaController();
           console.log("start of get events inside");
-          agentChatSession.then(controller => {
+          await contact.getAgentConnection().getMediaController().then(controller => {
             controller.onMessage(messageData => {
               console.log("calling getEvents inside");
               console.log(messageData.data.Content);
