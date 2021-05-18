@@ -114,7 +114,15 @@
           // creating Agent Chat Session
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
           const agentChatSession = await cnn.getMediaController();
-          getEvents(contact, agentChatSession);
+          console.log("start of get Evenets inside");
+          agentChatSession.then(controller => {
+            controller.onMessage(messageData => {
+              console.log("calling getEvents inside");
+              console.log(messageData.data.Content);
+              window.alert(messageData.data.Content);
+
+            })
+          })
         });
       });
 
