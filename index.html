@@ -86,7 +86,9 @@
 
         contact.onRefresh(async function (contact) {
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
+          console.log("before chat session media controller");
           const agentChatSession = await cnn.getMediaController();
+          console.log("after chat session media controller");
 
           const awsSdkResponse = await agentChatSession.getTranscript({
             maxResults: 5,
@@ -115,28 +117,17 @@
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
           const agentChatSession = await cnn.getMediaController();
           console.log("start of get Evenets inside");
-          agentChatSession.then(controller => {
-            controller.onMessage(messageData => {
-              console.log("calling getEvents inside");
-              console.log(messageData.data.Content);
-              window.alert(messageData.data.Content);
+          // agentChatSession.then(controller => {
+          //   controller.onMessage(messageData => {
+          //     console.log("calling getEvents inside");
+          //     console.log(messageData.data.Content);
+          //     window.alert(messageData.data.Content);
 
-            })
-          })
+          //   })
+          // })
         });
       });
 
-      function getEvents(contact, agentChatSession) {
-        console.log("start of get Evenets");
-        agentChatSession.then(controller => {
-          controller.onMessage(messageData => {
-            console.log("calling getEvents");
-            console.log(messageData.data.Content);
-            window.alert(messageData.data.Content);
-
-          })
-        })
-      }
 
 
     }
