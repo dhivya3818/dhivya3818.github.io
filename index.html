@@ -106,6 +106,7 @@
           const { InitialContactId, NextToken, Transcript } = awsSdkResponse.data;
 
           console.warn(JSON.stringify(Transcript[Transcript.length - 1]["Content"]));
+
         });
 
         contact.onAccepted(function (contact) {
@@ -124,6 +125,21 @@
           // creating Agent Chat Session
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
           const agentChatSession = await cnn.getMediaController();
+
+          // function getEvents(contact, agentChatSession) {
+          //   contact.getAgentConnection().getMediaController().then(controller => {
+          //     controller.onMessage(messageData => {
+          //       if (messageData.chatDetails.participantId === messageData.data.ParticipantId) {
+          //         console.log(`CDEBUG ===> Agent ${messageData.data.DisplayName} Says`,
+          //           messageData.data.Content)
+          //       }
+          //       else {
+          //         console.log(`CDEBUG ===> Customer ${messageData.data.DisplayName} Says`, messageData.data.Content);
+          //         processChatText(messageData.data.Content, messageData.data.Type, messageData.data.ContactId);
+          //       }
+          //     })
+          //   })
+          // }
 
         });
       });
