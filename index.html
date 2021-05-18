@@ -84,11 +84,8 @@
         });
 
         contact.onRefresh(async function (contact) {
-          console.log("start of onRefresh");
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
-          console.log("before chat session media controller");
           const agentChatSession = await cnn.getMediaController();
-          console.log("after chat session media controller");
 
           const awsSdkResponse = await agentChatSession.getTranscript({
             maxResults: 5,
@@ -116,15 +113,15 @@
           // creating Agent Chat Session
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
           const agentChatSession = await cnn.getMediaController();
-          console.log("start of get Evenets inside");
-          // agentChatSession.then(controller => {
-          //   controller.onMessage(messageData => {
-          //     console.log("calling getEvents inside");
-          //     console.log(messageData.data.Content);
-          //     window.alert(messageData.data.Content);
+          console.log("start of get events inside");
+          agentChatSession.then(controller => {
+            controller.onMessage(messageData => {
+              console.log("calling getEvents inside");
+              console.log(messageData.data.Content);
+              window.alert(messageData.data.Content);
 
-          //   })
-          // })
+            })
+          })
         });
       });
 
