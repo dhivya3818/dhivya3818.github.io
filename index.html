@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <script type="text/javascript" src="connect-streams-min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
+  <script src="bower_components\aws-sdk\dist\aws-sdk.js"></script>
+  <script type='text/javascript' src='config.js'></script>
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
 
@@ -15,6 +17,38 @@
     var containerDiv = document.getElementById("container-div");
     var agentContainerDiv = document.getElementById("agent-container-div");
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
+
+    AWS.config.region = 'eu-west-2';
+    ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
+    AWS.config.credentials = new AWS.Credentials(config.awsAccessKeyId, config.awsSecretAccessKey);
+    // var DetectLanguage = require('detectlanguage');
+    // window.alert("oj");
+    var text = "Hello how are you";
+    window.translator = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
+    window.alert(predictLanguage(text));
+    // var detectlanguage = new DetectLanguage('c4311f30706c3934da48d02ecaeab86f');
+    // detectlanguage.detect(text).then(function (result) {
+    //   window.alert(JSON.stringify(result));
+    // });
+
+    var params = {
+      Text: text,
+      SourceLanguageCode: 'auto',
+      TargetLanguageCode: 'en'
+    };
+
+    window.translator.translateText(params, function onSendMessageTranslate(err,
+      data) {
+      if (err) {
+        console.log("Error calling Translate. " + err.message + err.stack);
+      }
+      if (data) {
+        console.log("M: " + message);
+        console.log("T: " + data.TranslatedText);
+        //Send message to chat
+        window.alert(data.TranslatedText);
+      }
+    });
 
 
     // initialize the streams api
@@ -63,7 +97,7 @@
           });
 
           const { InitialContactId, NextToken, Transcript } = awsSdkResponse.data;
-          
+
           window.alert(JSON.stringify(Transcript[Transcript.length - 1]["Content"]));
         });
 
@@ -74,6 +108,7 @@
         });
 
         contact.onConnected(async function () {
+          // testing retrieval of contact attribute
           console.log(`onConnected(${contact.getContactId()})`);
           var attributeMap = contact.getAttributes();
           var zip = JSON.stringify(attributeMap["zip"]["value"]);
