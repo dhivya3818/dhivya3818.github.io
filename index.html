@@ -18,12 +18,17 @@
     var agentContainerDiv = document.getElementById("agent-container-div");
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
 
+
     console.log("start of script");
+    console.log(config.awsAccessKeyId);
+    // require('dotenv').config();
+    // console.log(process.env);
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
     AWS.config.credentials = new AWS.Credentials(config.awsAccessKeyId, config.awsSecretAccessKey);
     // var DetectLanguage = require('detectlanguage');
     // window.alert("oj");
+    console.log("under credentials");
     var text = "Hola, ¿cómo estás";
     window.translator = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
     // window.alert(predictLanguage(text));
@@ -100,7 +105,7 @@
 
           const { InitialContactId, NextToken, Transcript } = awsSdkResponse.data;
 
-          window.alert(JSON.stringify(Transcript[Transcript.length - 1]["Content"]));
+          console.warn(JSON.stringify(Transcript[Transcript.length - 1]["Content"]));
         });
 
         contact.onAccepted(function (contact) {

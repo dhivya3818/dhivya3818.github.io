@@ -1,2 +1,4 @@
 config.js
 bower_components/aws-sdk/*
+
+!bower_components/aws-sdk/dist/aws-sdk.js
