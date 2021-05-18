@@ -21,7 +21,7 @@
     // configuring AWS Service
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
-    var translate = new AWS.Translate({apiVersion: '2017-07-01', endpoint:ep, region:AWS.config.region});
+    var translate = new AWS.Translate();
 
 
     // initialize the streams api
@@ -96,7 +96,7 @@
               console.log("before translate Text");
               window.translator.translateText(params, function onSendMessageTranslate(err,
                 data) {
-                  console.log("inside translate text");
+                console.log("inside translate text");
                 if (err) {
                   console.log("translaatee eerooooooooooooorrrrrrr");
                   console.log("Error calling Translate. " + err.message + err.stack);
