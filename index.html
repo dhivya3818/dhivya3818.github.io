@@ -21,7 +21,6 @@
     // configuring AWS Service
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
-    var translator = new AWS.Translate({apiVersion: '2017-07-01', endpoint:ep, region:AWS.config.region});
 
     // initialize the streams api
     function init() {
@@ -83,19 +82,17 @@
 
 
               // aws translate code
-              
-
-              // window.translator = new AWS.Translate({endpoint:ep, region:AWS.config.region});
-              console.log("after translator thingy");
               AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
+              window.translate = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
+              
               var params = {
                 Text: messageData.data.Content,
                 SourceLanguageCode: 'auto',
                 TargetLanguageCode: 'en'
               };
-              
+
               console.log("before translate Text");
-              translator.translateText(params, function onSendMessageTranslate(err,
+              window.translate.translateText(params, function onSendMessageTranslate(err,
                 data) {
                 console.log("inside translate text");
                 if (err) {
@@ -104,10 +101,12 @@
                 }
                 if (data) {
                   console.log("T: " + data.TranslatedText);
-                  //Send message to chat
                   window.alert(data.TranslatedText);
                 }
               });
+
+
+              
 
             })
           })
