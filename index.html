@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <script type="text/javascript" src="connect-streams-min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
-  <script src="aws-sdk.js"></script>
-  <script type='text/javascript' src='config.js'></script>
+  <script type="text/javascript" src="require.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.908.0.min.js"></script>
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
 
@@ -14,48 +14,42 @@
   <div id="container-div" style="width: 400px; height: 800px;"></div>
   <div id="agent-container-div" style="width: 400px; height: 800px;"></div>
   <script type="text/javascript">
+
     var containerDiv = document.getElementById("container-div");
     var agentContainerDiv = document.getElementById("agent-container-div");
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
 
-
-    console.log("start of script");
-    console.log(config.awsAccessKeyId);
-    // require('dotenv').config();
-    // console.log(process.env);
+    // configuring AWS Service
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
-    AWS.config.credentials = new AWS.Credentials(config.awsAccessKeyId, config.awsSecretAccessKey);
+    
     // var DetectLanguage = require('detectlanguage');
     // window.alert("oj");
-    console.log("under credentials");
+    console.log("no credentials");
     var text = "Hola, ¿cómo estás";
     window.translator = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
-    // window.alert(predictLanguage(text));
-    // var detectlanguage = new DetectLanguage('c4311f30706c3934da48d02ecaeab86f');
-    // detectlanguage.detect(text).then(function (result) {
-    //   window.alert(JSON.stringify(result));
+
+
+    // // aws translate code
+    // AWS.config.credentials = new AWS.Credentials(config.awsAccessKeyId, config.awsSecretAccessKey);
+    // var params = {
+    //   Text: text,
+    //   SourceLanguageCode: 'auto',
+    //   TargetLanguageCode: 'en'
+    // };
+
+    // window.translator.translateText(params, function onSendMessageTranslate(err,
+    //   data) {
+    //   if (err) {
+    //     console.log("translaatee eerooooooooooooorrrrrrr");
+    //     console.log("Error calling Translate. " + err.message + err.stack);
+    //   }
+    //   if (data) {
+    //     console.log("T: " + data.TranslatedText);
+    //     //Send message to chat
+    //     window.alert(data.TranslatedText);
+    //   }
     // });
-
-    var params = {
-      Text: text,
-      SourceLanguageCode: 'auto',
-      TargetLanguageCode: 'en'
-    };
-
-    window.translator.translateText(params, function onSendMessageTranslate(err,
-      data) {
-      if (err) {
-        console.log("translaatee eerooooooooooooorrrrrrr");
-        console.log("Error calling Translate. " + err.message + err.stack);
-      }
-      if (data) {
-        console.log("M: " + message);
-        console.log("T: " + data.TranslatedText);
-        //Send message to chat
-        window.alert(data.TranslatedText);
-      }
-    });
 
 
     // initialize the streams api
@@ -106,7 +100,6 @@
           const { InitialContactId, NextToken, Transcript } = awsSdkResponse.data;
 
           console.warn(JSON.stringify(Transcript[Transcript.length - 1]["Content"]));
-
         });
 
         contact.onAccepted(function (contact) {
