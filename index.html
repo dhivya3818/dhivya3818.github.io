@@ -5,7 +5,6 @@
   <meta charset="UTF-8">
   <script type="text/javascript" src="connect-streams-min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
-  <script type="text/javascript" src="require.js"></script>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.908.0.min.js"></script>
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
@@ -85,6 +84,7 @@
         });
 
         contact.onRefresh(async function (contact) {
+          console.log("start of onRefresh");
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
           console.log("before chat session media controller");
           const agentChatSession = await cnn.getMediaController();
