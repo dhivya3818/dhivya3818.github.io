@@ -18,14 +18,15 @@
     var agentContainerDiv = document.getElementById("agent-container-div");
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
 
+    console.log("start of script");
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
     AWS.config.credentials = new AWS.Credentials(config.awsAccessKeyId, config.awsSecretAccessKey);
     // var DetectLanguage = require('detectlanguage');
     // window.alert("oj");
-    var text = "Hello how are you";
+    var text = "Hola, ¿cómo estás";
     window.translator = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
-    window.alert(predictLanguage(text));
+    // window.alert(predictLanguage(text));
     // var detectlanguage = new DetectLanguage('c4311f30706c3934da48d02ecaeab86f');
     // detectlanguage.detect(text).then(function (result) {
     //   window.alert(JSON.stringify(result));
@@ -40,6 +41,7 @@
     window.translator.translateText(params, function onSendMessageTranslate(err,
       data) {
       if (err) {
+        console.log("translaatee eerooooooooooooorrrrrrr");
         console.log("Error calling Translate. " + err.message + err.stack);
       }
       if (data) {
