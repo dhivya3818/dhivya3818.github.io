@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <script type="text/javascript" src="connect-streams-min.js"></script>
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.908.0.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.159.0.min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
@@ -21,6 +21,7 @@
     // configuring AWS Service
     AWS.config.region = 'eu-west-2';
     ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
+    var translator = new AWS.Translate({apiVersion: '2017-07-01', endpoint:ep, region:AWS.config.region});
 
     // initialize the streams api
     function init() {
@@ -82,7 +83,7 @@
 
 
               // aws translate code
-              var translator = new AWS.Translate({apiVersion: '2017-07-01', endpoint:ep, region:AWS.config.region});
+              
 
               // window.translator = new AWS.Translate({endpoint:ep, region:AWS.config.region});
               console.log("after translator thingy");
