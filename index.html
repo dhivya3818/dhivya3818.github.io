@@ -84,7 +84,8 @@
 
               // aws translate code
               console.log("after translator thingy");
-              console.log(attributeMap["awsAccessKeyId"]["value"]);
+              console.log("one more?");
+              console.log(JSON.stringify(["awsAccessKeyId"]["value"]));
               AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
               console.log("after setting credentials");
               window.translate = new AWS.Translate({endpoint:ep, region:AWS.config.region});
