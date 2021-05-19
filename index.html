@@ -19,8 +19,8 @@
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
 
     // configuring AWS Service
-    AWS.config.region = 'eu-west-2';
-    ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
+    // AWS.config.region = 'eu-west-2';
+    // ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
 
     // initialize the streams api
     function init() {
@@ -82,9 +82,6 @@
 
 
               // aws translate code
-              
-
-              // window.translator = new AWS.Translate({endpoint:ep, region:AWS.config.region});
               console.log("after translator thingy");
               AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
               window.translate = new AWS.Translate({endpoint:ep, region:AWS.config.region});
