@@ -19,8 +19,8 @@
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
 
     // configuring AWS Service
-    // AWS.config.region = 'eu-west-2';
-    // ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
+    AWS.config.region = 'eu-west-2';
+    ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
 
     // initialize the streams api
     function init() {
