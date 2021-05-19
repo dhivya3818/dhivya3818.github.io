@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <script type="text/javascript" src="connect-streams-min.js"></script>
-  <!-- <script src="https://sdk.amazonaws.com/js/aws-sdk-2.159.0.min.js"></script>
-  <script type="text/javascript" src="amazon-connect-chat.js"></script> -->
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.159.0.min.js"></script>
+  <script type="text/javascript" src="amazon-connect-chat.js"></script>
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
 
@@ -16,7 +16,7 @@
 
     var containerDiv = document.getElementById("container-div");
     var agentContainerDiv = document.getElementById("agent-container-div");
-    var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
+    var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp#/";
 
     // configuring AWS Service
     // AWS.config.region = 'eu-west-2';
@@ -49,67 +49,67 @@
       });
 
       // configuring ChatSession 
-      // connect.ChatSession.setGlobalConfig({
-      //   region: "eu-west-2",
-      // });
+      connect.ChatSession.setGlobalConfig({
+        region: "eu-west-2",
+      });
 
-      // connect.contact(function (contact) {
+      connect.contact(function (contact) {
 
-      //   contact.onIncoming(function (contact) {
-      //   });
+        contact.onIncoming(function (contact) {
+        });
 
-      //   contact.onRefresh(async function (contact) {
-      //   });
+        contact.onRefresh(async function (contact) {
+        });
 
-      //   contact.onAccepted(function (contact) {
-      //   });
+        contact.onAccepted(function (contact) {
+        });
 
-      //   contact.onEnded(function () {
-      //   });
+        contact.onEnded(function () {
+        });
 
-      //   contact.onConnected(async function () {
-      //     // testing retrieval of contact attribute
-      //     console.log(`onConnected(${contact.getContactId()})`);
-      //     var attributeMap = contact.getAttributes();
+        contact.onConnected(async function () {
+          // testing retrieval of contact attribute
+          console.log(`onConnected(${contact.getContactId()})`);
+          var attributeMap = contact.getAttributes();
 
-      //     // creating Agent Chat Session
-      //     const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
-      //     const agentChatSession = await cnn.getMediaController();
-      //     console.log("start of get events inside");
-      //     await contact.getAgentConnection().getMediaController().then(controller => {
-      //       controller.onMessage(messageData => {
-      //         console.log("calling getEvents inside");
+          // creating Agent Chat Session
+          const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
+          const agentChatSession = await cnn.getMediaController();
+          console.log("start of get events inside");
+          await contact.getAgentConnection().getMediaController().then(controller => {
+            controller.onMessage(messageData => {
+              console.log("calling getEvents inside");
 
 
-      //         // aws translate code
-      //         // console.log("after translator thingy");
-      //         // AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
-      //         // window.translate = new AWS.Translate({endpoint:ep, region:AWS.config.region});
-      //         // var params = {
-      //         //   Text: messageData.data.Content,
-      //         //   SourceLanguageCode: 'auto',
-      //         //   TargetLanguageCode: 'en'
-      //         // };
+              // aws translate code
+              // console.log("after translator thingy");
+              // AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
+              // window.translate = new AWS.Translate({endpoint:ep, region:AWS.config.region});
+              // var params = {
+              //   Text: messageData.data.Content,
+              //   SourceLanguageCode: 'auto',
+              //   TargetLanguageCode: 'en'
+              // };
               
-      //         // console.log("before translate Text");
-      //         // window.translate.translateText(params, function onSendMessageTranslate(err,
-      //         //   data) {
-      //         //   console.log("inside translate text");
-      //         //   if (err) {
-      //         //     console.log("translaatee eerooooooooooooorrrrrrr");
-      //         //     console.log("Error calling Translate. " + err.message + err.stack);
-      //         //   }
-      //         //   if (data) {
-      //         //     console.log("T: " + data.TranslatedText);
-      //         //     //Send message to chat
-      //         //     window.alert(data.TranslatedText);
-      //         //   }
-      //         // });
+              // console.log("before translate Text");
+              // window.translate.translateText(params, function onSendMessageTranslate(err,
+              //   data) {
+              //   console.log("inside translate text");
+              //   if (err) {
+              //     console.log("translaatee eerooooooooooooorrrrrrr");
+              //     console.log("Error calling Translate. " + err.message + err.stack);
+              //   }
+              //   if (data) {
+              //     console.log("T: " + data.TranslatedText);
+              //     //Send message to chat
+              //     window.alert(data.TranslatedText);
+              //   }
+              // });
 
-      //       })
-      //     })
-      //   });
-      // });
+            })
+          })
+        });
+      });
 
 
 
