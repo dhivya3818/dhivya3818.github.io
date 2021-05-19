@@ -20,9 +20,8 @@
     var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
 
     // configuring AWS Service
-    AWS.config.region = 'eu-west-2';
-    ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
-    window.translator = new AWS.Translate({endpoint: ep, region: AWS.config.region})
+    // AWS.config.region = 'eu-west-2';
+    // ep = new AWS.Endpoint('translate.eu-west-2.amazonaws.com');
 
     // initialize the streams api
     function init() {
@@ -76,7 +75,9 @@
           var attributeMap = contact.getAttributes();
 
           // creating Agent Chat Session
+          console.log("getting connection");
           const cnn = contact.getConnections().find(cnn => cnn.getType() === window.connect.ConnectionType.AGENT);
+          console.log("before getting media controller");
           const agentChatSession = await cnn.getMediaController();
           console.log("start of get events inside");
           await contact.getAgentConnection().getMediaController().then(controller => {
