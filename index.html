@@ -16,7 +16,7 @@
 
     var containerDiv = document.getElementById("container-div");
     var agentContainerDiv = document.getElementById("agent-container-div");
-    var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp#/";
+    var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp#";
 
     // configuring AWS Service
     // AWS.config.region = 'eu-west-2';
@@ -27,7 +27,7 @@
       // initialize the ccp
       connect.core.initCCP(containerDiv, {
         ccpUrl: instanceURL,            // REQUIRED
-        loginPopup: true,               // optional, defaults to `true`
+        loginPopup: false,               // optional, defaults to `true`
         loginPopupAutoClose: true,      // optional, defaults to `false`
         loginOptions: {                 // optional, if provided opens login in new window
           autoClose: true,              // optional, defaults to `false`
