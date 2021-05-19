@@ -83,29 +83,29 @@
 
 
               // aws translate code
-              // console.log("after translator thingy");
-              // AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
-              // window.translate = new AWS.Translate({endpoint:ep, region:AWS.config.region});
-              // var params = {
-              //   Text: messageData.data.Content,
-              //   SourceLanguageCode: 'auto',
-              //   TargetLanguageCode: 'en'
-              // };
+              console.log("after translator thingy");
+              AWS.config.credentials = new AWS.Credentials(attributeMap["awsAccessKeyId"]["value"], attributeMap["awsSecretAccessKey"]["value"]);
+              window.translate = new AWS.Translate({endpoint:ep, region:AWS.config.region});
+              var params = {
+                Text: messageData.data.Content,
+                SourceLanguageCode: 'auto',
+                TargetLanguageCode: 'en'
+              };
               
-              // console.log("before translate Text");
-              // window.translate.translateText(params, function onSendMessageTranslate(err,
-              //   data) {
-              //   console.log("inside translate text");
-              //   if (err) {
-              //     console.log("translaatee eerooooooooooooorrrrrrr");
-              //     console.log("Error calling Translate. " + err.message + err.stack);
-              //   }
-              //   if (data) {
-              //     console.log("T: " + data.TranslatedText);
-              //     //Send message to chat
-              //     window.alert(data.TranslatedText);
-              //   }
-              // });
+              console.log("before translate Text");
+              window.translate.translateText(params, function onSendMessageTranslate(err,
+                data) {
+                console.log("inside translate text");
+                if (err) {
+                  console.log("translaatee eerooooooooooooorrrrrrr");
+                  console.log("Error calling Translate. " + err.message + err.stack);
+                }
+                if (data) {
+                  console.log("T: " + data.TranslatedText);
+                  //Send message to chat
+                  window.alert(data.TranslatedText);
+                }
+              });
 
             })
           })
