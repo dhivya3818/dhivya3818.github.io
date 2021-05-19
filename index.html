@@ -1,58 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <script type="text/javascript" src="connect-streams-min.js"></script>
-  </head>
-  <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
-  <body onload="init()">
-    <div id="container-div" style="width: 400px; height: 800px;"></div>
-    <script type="text/javascript">
-      var containerDiv = document.getElementById("container-div");
-      var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
-      // initialize the streams api
-      function init() {
-        // initialize the ccp
-        connect.core.initCCP(containerDiv, {
-          ccpUrl: instanceURL,            // REQUIRED
-          loginPopup: true,               // optional, defaults to `true`
-          loginPopupAutoClose: true,      // optional, defaults to `false`
-          loginOptions: {                 // optional, if provided opens login in new window
-            autoClose: true,              // optional, defaults to `false`
-            height: 600,                  // optional, defaults to 578
-            width: 400,                   // optional, defaults to 433
-            top: 0,                       // optional, defaults to 0
-            left: 0                       // optional, defaults to 0
-          },
-          region: "eu-west-2",         // REQUIRED for `CHAT`, optional otherwise
-          softphone: {                    // optional, defaults below apply if not provided
-            allowFramedSoftphone: true,   // optional, defaults to false
-            disableRingtone: false,       // optional, defaults to false
-            ringtoneUrl: "./ringtone.mp3" // optional, defaults to CCP’s default ringtone if a falsy value is set
-          },
-          pageOptions: {                  // optional
-            enableAudioDeviceSettings: false, // optional, defaults to 'false'
-            enablePhoneTypeSettings: true // optional, defaults to 'true'
-          }
-        });
-      }
-    </script>
-  </body>
-</html>
-
-
-
-<!-- <!DOCTYPE html>
-<html>
 
 <head>
   <meta charset="UTF-8">
   <script type="text/javascript" src="connect-streams-min.js"></script>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.159.0.min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
-</head> -->
+</head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
-<!-- 
+
 <body onload="init()">
   <div id="container-div" style="width: 400px; height: 800px;"></div>
   <div id="agent-container-div" style="width: 400px; height: 800px;"></div>
@@ -60,7 +16,7 @@
 
     var containerDiv = document.getElementById("container-div");
     var agentContainerDiv = document.getElementById("agent-container-div");
-    var instanceURL = "https://contact-centre-service.awsapps.com/connect/login/";
+    var instanceURL = "https://contact-centre-service.awsapps.com/connect/ccp-v2/";
 
     // configuring AWS Service
     // AWS.config.region = 'eu-west-2';
@@ -71,7 +27,7 @@
       // initialize the ccp
       connect.core.initCCP(containerDiv, {
         ccpUrl: instanceURL,            // REQUIRED
-        loginPopup: false,               // optional, defaults to `true`
+        loginPopup: true,               // optional, defaults to `true`
         loginPopupAutoClose: true,      // optional, defaults to `false`
         loginOptions: {                 // optional, if provided opens login in new window
           autoClose: true,              // optional, defaults to `false`
@@ -161,4 +117,4 @@
   </script>
 </body>
 
-</html> -->
+</html>
