@@ -26,7 +26,8 @@
     function init() {
       // initialize the ccp
       connect.core.initCCP(containerDiv, {
-        ccpUrl: instanceURL,            // REQUIRED
+        ccpUrl: instanceURL,
+        ccpLoadTimeout: 25000,            // REQUIRED
         loginPopup: false,               // optional, defaults to `true`
         loginPopupAutoClose: true,      // optional, defaults to `false`
         loginOptions: {                 // optional, if provided opens login in new window
