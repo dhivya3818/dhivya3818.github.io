@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.597.0.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.909.0.min.js"></script>
   <script type="text/javascript" src="connect-streams-min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
 </head>
@@ -85,7 +85,6 @@
               AWS.config.region = 'eu-west-2';
               ep = new AWS.Endpoint('https://translate.eu-west-2.amazonaws.com');
               // aws translate code
-              console.log("after translator thingy");
               AWS.config.credentials = new AWS.Credentials(JSON.stringify(["awsAccessKeyId"]["value"]), JSON.stringify(attributeMap["awsSecretAccessKey"]["value"]));
               window.translator = new AWS.Translate({ endpoint: ep, region: AWS.config.region });
               console.log("after translate");
