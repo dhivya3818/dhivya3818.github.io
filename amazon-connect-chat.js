@@ -505,8 +505,8 @@ var AWSChatClient = /*#__PURE__*/function (_ChatClient) {
       region: args.region,
       endpoint: args.endpoint,
       credentials: creds
-    });
-    _this.chatClient = new AWS.ConnectParticipant(config);
+    }); // this.chatClient = new AWS.ConnectParticipant(config);
+
     _this.invokeUrl = args.endpoint;
     _this.logger = _log__WEBPACK_IMPORTED_MODULE_3__["LogManager"].getLogger({
       prefix: "ChatClient"
