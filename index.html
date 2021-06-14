@@ -3,15 +3,27 @@
 
 <head>
   <meta charset="UTF-8">
-  <script type="text/javascript" src="connect-streams-min.js"></script>
+  <!-- <script type="text/javascript" src="connect-streams-min.js"></script>
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.772.0.min.js"></script>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.772.0.min.js"></script> -->
+  <script type="text/javascript">
+    (function(w, d, x, id){
+      s=d.createElement('script');
+      s.src='https://d2zasqxhmd6ne4.cloudfront.net/amazon-connect-chat-interface-client.js';
+      s.async=1;
+      s.id=id;
+      d.getElementsByTagName('head')[0].appendChild(s);
+      w[x] =  w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
+    })(window, document, 'amazon_connect', '8d23e3ef-4918-4827-ae12-c6e5b23e57b0');
+    amazon_connect('styles', { openChat: { color: 'white', backgroundColor: '#123456'}, closeChat: { color: 'white', backgroundColor: '#123456'} });
+    amazon_connect('snippetId', 'QVFJREFIaGo1T2pOSWpLWW9NR2I3V2FjTU9DR3JoaHRWaTZZQ1d1K0FuWmJjbnVkNHdIQ0kxNUVSVkdIYmR3Y294b1psLytBQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNckx0WG94M095V0pYY2xzTUFnRVFnQ3MzWk95TUhGTkQ2WTdlYlNtZVNZWUNsblVURmZ4c0ZZL1B4U0dtWXZ3T2dJb1Y1Mlk4akhhUlpuWnA6OkJ5RlRNNkpQR3ZmTTFORTl4Z0lLVkU1Wkt6ZWNDc0NRZFdvTDN2ZmRXMkkrenVjT3oyQ1ljVG1aUmMwMk12Z1p0aklObEFDWDZnRXYyR01IQVVOaVBncjdjaDFUVk5MK010Wk90cVlLWWxWU3NPOVlBcGg1YXRRa2E0WEhENmI1S21LR0RpUHJwdkVlckxqSUQ0ZU0xeUFmalFjRkVBND0=');
+  </script>
   
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
 
 <body onload="init()">
-  <div id="container-div" style="width: 400px; height: 800px;"></div>
+  <!-- <div id="container-div" style="width: 400px; height: 800px;"></div>
   <div id="agent-container-div" style="width: 400px; height: 800px;"></div>
   <script type="text/javascript">
 
@@ -98,7 +110,7 @@
               };
 
               console.log("before translate Text");
-              window.translator.translateText(params, function onSendMessageTranslate(err,
+              await window.translator.translateText(params, function onSendMessageTranslate(err,
                 data) {
                 console.log("inside translate text");
                 if (err) {
@@ -120,7 +132,7 @@
 
 
     }
-  </script>
+  </script> -->
 </body>
 
 </html>
