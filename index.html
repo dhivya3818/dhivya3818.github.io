@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+  <style>
+    .center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+  </style>
 
 <head>
   <meta charset="UTF-8">
@@ -23,8 +31,22 @@
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
 
 <body onload="init()">
-  <h1>Amazon Connect Contact Centre Usability Test</h1>
-  <h3>Here is your current customer profile: </h3>
+  <img src="lilium_lockup_small_black.jpg" class="center" >
+  <div class="center">
+  <h1 style="text-align: center;">Amazon Connect Contact Centre Usability Test</h1>
+  <p style="text-align: center;">There are 4 stories that have been developed and integrated into the contact centre service. The usability test 
+    includes carrying out the tasks below then giving your feedback in the form you will find from the button at the 
+    bottom of the page. <b>Task number 1</b>  is the most important and the focus of questions in the feedback form. The
+     other tasks are optional but feedback on them will be appreciated :)
+</p>
+  <h3>Tasks:</h3>
+  <ol>
+    <li>Change booking to a flight on the 2nd of June 2021</li>
+    <li>Cancel booking </li>
+    <li>Retrieve what information is being stored in the customer's account</li>
+    <li>Modify the information being stored in the customer's account</li>
+  </ol>
+  <h3>Below is the information you will need to complete the tasks. </h3>
 
       <h4>User account information: </h4>
         <ul>
@@ -37,6 +59,10 @@
         <li>Flight from LONDON to BRIGHTON </li>
         <li>Flight date: 1st June 2021</li>
       </ul>
+      <form style="text-align: center;" action="https://forms.gle/wrKZSdrj6hwZMND96">
+        <input type="submit" value="Feedback Form" />
+    </form>
+      </div>
 
   <!-- <div id="container-div" style="width: 400px; height: 800px;"></div>
   <div id="agent-container-div" style="width: 400px; height: 800px;"></div>
