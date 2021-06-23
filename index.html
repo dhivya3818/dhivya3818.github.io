@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <style>
-    .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  text-align: justify;
-}
-  </style>
+<style>
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    text-align: justify;
+  }
+</style>
 
 <head>
   <meta charset="UTF-8">
@@ -16,60 +16,64 @@
   <script type="text/javascript" src="amazon-connect-chat.js"></script>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.772.0.min.js"></script> -->
   <script type="text/javascript">
-    (function(w, d, x, id){
-      s=d.createElement('script');
-      s.src='https://d2zasqxhmd6ne4.cloudfront.net/amazon-connect-chat-interface-client.js';
-      s.async=1;
-      s.id=id;
+    (function (w, d, x, id) {
+      s = d.createElement('script');
+      s.src = 'https://d2zasqxhmd6ne4.cloudfront.net/amazon-connect-chat-interface-client.js';
+      s.async = 1;
+      s.id = id;
       d.getElementsByTagName('head')[0].appendChild(s);
-      w[x] =  w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
+      w[x] = w[x] || function () { (w[x].ac = w[x].ac || []).push(arguments) };
     })(window, document, 'amazon_connect', '8d23e3ef-4918-4827-ae12-c6e5b23e57b0');
-    amazon_connect('styles', { openChat: { color: 'white', backgroundColor: '#123456'}, closeChat: { color: 'white', backgroundColor: '#123456'} });
+    amazon_connect('styles', { openChat: { color: 'white', backgroundColor: '#123456' }, closeChat: { color: 'white', backgroundColor: '#123456' } });
     amazon_connect('snippetId', 'QVFJREFIaGo1T2pOSWpLWW9NR2I3V2FjTU9DR3JoaHRWaTZZQ1d1K0FuWmJjbnVkNHdIQ0kxNUVSVkdIYmR3Y294b1psLytBQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNckx0WG94M095V0pYY2xzTUFnRVFnQ3MzWk95TUhGTkQ2WTdlYlNtZVNZWUNsblVURmZ4c0ZZL1B4U0dtWXZ3T2dJb1Y1Mlk4akhhUlpuWnA6OkJ5RlRNNkpQR3ZmTTFORTl4Z0lLVkU1Wkt6ZWNDc0NRZFdvTDN2ZmRXMkkrenVjT3oyQ1ljVG1aUmMwMk12Z1p0aklObEFDWDZnRXYyR01IQVVOaVBncjdjaDFUVk5MK010Wk90cVlLWWxWU3NPOVlBcGg1YXRRa2E0WEhENmI1S21LR0RpUHJwdkVlckxqSUQ0ZU0xeUFmalFjRkVBND0=');
   </script>
-  
+
 </head>
 <!-- Add the call to init() as an onload so it will only run once the page is loaded -->
 
 <body onload="init()">
   <div class="center">
-  <h1 style="text-align: center;">Amazon Connect Contact Centre Usability Test</h1>
-  <p style="text-align: justify;">There are 4 stories that have been developed and integrated into the contact centre service. The usability test 
-    includes carrying out the tasks below then giving your feedback in the feedback form you will find from the button at the 
-    bottom of the page. <b>Task number 1</b>  is the most important and the focus of questions in the <b>feedback form</b>. The
-     other tasks are optional but feedback on them will be appreciated :)
-  <br><br>
-  <i>*Note: Actual cancellations and rescheduling of bookings in the database has been turned off for testing purposes,
-    but account information can still be changed.
-  </i>
-</p>
-  <h3>Tasks:</h3>
-  <ol>
-    <li>Change booking to a flight on the 2nd June 2021</li>
-    <li>Cancel booking </li>
-    <li>Retrieve what information is being stored in the customer's account</li>
-    <li>Modify the information being stored in the customer's account</li>
-  </ol>
-  <br>
-  <h3>Below is the information you will need to complete the tasks. </h3>
+    <h1 style="text-align: center;">Amazon Connect Contact Centre Usability Test</h1>
+    <p style="text-align: justify;">There are 4 stories that have been developed and integrated into the contact centre
+      service. The usability test
+      includes carrying out the tasks below then giving your feedback in the feedback form you will find from the button
+      at the
+      bottom of the page. The <b>chatbot</b> can be found at the <b>bottom right corner</b> of the page. <b>Task number
+        1</b> is the most important and the focus of questions in the <b>feedback form</b>. The
+      other tasks are optional but feedback on them will be appreciated :)
+      <br><br>
+      <i>*Note: Actual cancellations and rescheduling of bookings in the database has been turned off for testing
+        purposes,
+        but account information can still be changed.
+      </i>
+    </p>
+    <h3>Tasks:</h3>
+    <ol>
+      <li>Change booking to a flight on the 2nd June 2021</li>
+      <li>Cancel booking </li>
+      <li>Retrieve what information is being stored in the customer's account</li>
+      <li>Modify the information being stored in the customer's account</li>
+    </ol>
+    <br>
+    <h3>Below is the information you will need to complete the tasks. </h3>
 
-      <h4>User account information: </h4>
-        <ul>
-          <li>Account ID number: 1</li>
-        </ul>
-      <h4>This user currently has a booking. Its details are as follows:</h4>
-      <ul>
-        <li>Booking reference number: 111</li>
-        <li>Flight ID: 123</li>
-        <li>Flight from LONDON to BRIGHTON </li>
-        <li>Flight date: 1st June 2021</li>
-      </ul>
-      <form style="text-align: center;" action="https://forms.gle/wrKZSdrj6hwZMND96">
-        <input type="submit" value="Feedback Form" />
+    <h4>User account information: </h4>
+    <ul>
+      <li>Account ID number: 1</li>
+    </ul>
+    <h4>This user currently has a booking. Its details are as follows:</h4>
+    <ul>
+      <li>Booking reference number: 111</li>
+      <li>Flight ID: 123</li>
+      <li>Flight from LONDON to BRIGHTON </li>
+      <li>Flight date: 1st June 2021</li>
+    </ul>
+    <form style="text-align: center;" action="https://forms.gle/wrKZSdrj6hwZMND96">
+      <input type="submit" value="Feedback Form" />
     </form>
-      </div>
-      <br>
-      <br>
+  </div>
+  <br>
+  <br>
 
   <!-- <div id="container-div" style="width: 400px; height: 800px;"></div>
   <div id="agent-container-div" style="width: 400px; height: 800px;"></div>
